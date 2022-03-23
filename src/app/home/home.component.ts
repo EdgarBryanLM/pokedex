@@ -11,15 +11,25 @@ export class HomeComponent implements OnInit {
 
   constructor(private servicio:PokemonService) { }
     Pokemon!:pokemon;
-  ngOnInit() {
 
-    this.servicio.getPokemon().subscribe((res:pokemon) => {
+
+    
+ async ngOnInit() {
+
+  await  this.servicio.getPokemon().subscribe(async (res:pokemon) => {
 
       this.Pokemon=res;
       console.log(this.Pokemon.sprites.other?.home.front_default);
+      console.log( this.Pokemon.stats);
       
 
     });
+
+    for (let i = 0; i <  this.Pokemon.stats.length; i++) {
+      console.log('Hola');
+      
+      
+    }
   }
 
 }

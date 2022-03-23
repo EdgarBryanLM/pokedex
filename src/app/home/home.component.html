@@ -7,14 +7,57 @@
 			</div>
 		</div>
 		<div class="col-12  px-4 py-4 col-md-6">
-			<input type="text">
+			<div class="text-center">
+				<input type="text">
+			</div>
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-12">
-			<img [src]="this.Pokemon.sprites.other?.home?.front_default" class="img-fluid mx-auto d-block " >
-
+		
+				<img [src]="this.Pokemon.sprites.other?.home?.front_default" class="img-fluid mx-auto d-block imagen-pokemon">
+				<h2 class="h2 text-light numero"><strong>#{{Pokemon.id}}</strong></h2>
 		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-2 col-2"></div>
+		<div class="col-12 col-md-8 text-center">
+			<div class="card">
+				<h1>{{Pokemon.name |titlecase}}</h1>
+				<hr>
+				
+					<div class="row">
+						<div class="col-6">
+							<h6 >Altura: {{Pokemon.height}} cm</h6>
+						</div>
+						<div class="col-6">
+							<h6 >Anchura: {{Pokemon.weight}} cm</h6>
+						</div>
+					</div>
+
+					<h5 class="h5 text-center py-3"><strong>Estadisticas Iniciales</strong></h5>
+					<div class="row">
+						<div class="col-6 text-center px-5" *ngFor="let esta of Pokemon.stats;let i = index">
+								<div class="row">
+									<div class="col-6">
+										<h6 class="h6 text-start"><strong>{{Pokemon.stats[i].stat.name}}: </strong></h6>
+									</div>
+									<div class="col-6">
+										<h6 class="h6">{{Pokemon.stats[i].base_stat}}</h6>
+									</div>
+								
+							</div>
+						</div>
+					</div>
+				
+					
+
+				
+			</div>
+		</div>
+		<div class="col-md-2 col-2"></div>
+
 	</div>
 </div>
