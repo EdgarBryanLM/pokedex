@@ -1,23 +1,30 @@
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-12 px-4 py-4 col-md-6 animate__animated animate__slideInLeft">
+		<div class="col-6 px-4 py-4 col-md-1 animate__animated animate__slideInLeft">
+
+		</div>
+		<div class="col-6  px-4 py-4 col-md-11 animate__animated   animate__fadeInUp">
 			<div class="d-flex">
 				<img src="../../assets/img/icono.png" class="img-fluid logo" >
 				<h2 class="h2 text-light"><strong>Pokédex</strong></h2>
 			</div>
+
 		</div>
-		<div class="col-12  px-4 py-4 col-md-6 animate__animated   animate__fadeInUp">
+	</div>
+
+
+	<div class="row mb-4">
+		<div class="col-12">
 			<div class="text-center">
 				<input type="text">
 			</div>
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="row mb-3">
 		<div class="col-12">
-		
-				<img [src]="this.Pokemon.sprites.other?.home?.front_default" class="img-fluid mx-auto d-block imagen-pokemon animate__animated animate__zoomIn">
-				<h2 class="h2 text-light numero animate__animated animate__slideInRight"><strong>#{{Pokemon.id}}</strong></h2>
+				<img [src]="this.Pokemon.sprites.other?.home?.front_default" class="img-fluid mx-auto d-block imagen-pokemon animate__animated animate__pulse animate__slow animate__infinite">
+
 		</div>
 	</div>
 
@@ -28,7 +35,7 @@
 				<h1 class="h1 mt-2"><strong>{{Pokemon.name |titlecase}}</strong></h1>
 				<hr>
 				
-					<div class="row" *ngIf="Estadisticas">
+					<div class="row animate__animated   animate__fadeInUp" *ngIf="Estadisticas">
 						<div class="col-6">
 							<h6> <strong>Altura:</strong> {{Pokemon.height}} cm</h6>
 						</div>
@@ -37,14 +44,14 @@
 						</div>
 					</div>
 
-					<div class="row mt-2" *ngIf="Estadisticas">
+					<div class="row mt-2 animate__animated   animate__fadeInUp" *ngIf="Estadisticas">
 						<div class="col-12">
 							<h6 class="h6  text-center"><strong>Experiencia base:</strong> {{Pokemon.base_experience}} xp</h6>
 
 						</div>
 					</div>
 
-					<div class="row mt-2" *ngIf="Estadisticas">
+					<div class="row mt-2 animate__animated   animate__fadeInUp" *ngIf="Estadisticas">
 						<div class="col-12">
 							<h6 class="h6  text-center"><strong>Tipo</strong></h6>
 							<div class="div text-center" *ngFor="let tipo of Pokemon.types">
@@ -57,7 +64,7 @@
 
 
 				
-					<div class="row mb-4" *ngIf="Estadisticas">
+					<div class="row mb-4 animate__animated   animate__fadeInUp" *ngIf="Estadisticas">
 						<h4 class="h5 text-center py-3"><strong>Estadisticas Iniciales</strong></h4>
 						<div class="col-12 col-md-6 text-center px-5" *ngFor="let esta of Pokemon.stats;let i = index">
 								<div class="row">
@@ -72,7 +79,7 @@
 						</div>
 					</div>
 					
-					<div class="row mb-4" *ngIf="Estadisticas">
+					<div class="row mb-4 animate__animated   animate__fadeInUp" *ngIf="Estadisticas">
 						<h4 class="h5 text-center py-3"><strong>Habilidades</strong></h4>
 						<div class="col-12 col-md-6 text-center px-5" *ngFor="let esta of Pokemon.abilities;let i = index">
 								<div class="row">

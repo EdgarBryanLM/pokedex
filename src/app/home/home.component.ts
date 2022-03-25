@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
     
  async ngOnInit() {
 
-  await  this.servicio.getPokemon('pikachu').subscribe(async (res:pokemon) => {
+  await  this.servicio.getPokemon('lucario').subscribe(async (res:pokemon) => {
 
       this.Pokemon=res;
       console.log(this.Pokemon.sprites.other?.home.front_default);
