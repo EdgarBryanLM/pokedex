@@ -7,9 +7,9 @@ import { pokemon } from '../interfaces/pokemon.interface';
 export class PokemonService {
 
   constructor(private http:HttpClient) { }
-  url:string='https://pokeapi.co/api/v2/pokemon/ditto';
+  url:string='https://pokeapi.co/api/v2/pokemon/';
 
-  getPokemon(){
-    return this.http.get<pokemon>(this.url);
+  getPokemon(nombre:string){
+    return this.http.get<pokemon>(this.url+nombre);
   }
 }
