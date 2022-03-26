@@ -1,7 +1,21 @@
+
+<p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
+	<div class="d-flex my-4">
+		<img src="../../assets/img/icono.png" class="img-fluid logo" >
+		<h2 class="h2 text-dark"><strong>Pokédex</strong></h2>
+	</div>
+
+	<ul class="list-group list-group-flush my-5">
+		<li class="list-group-item boton" (click)="MostrarPokemon()"> Buscar Pokemon</li>
+		<!-- <li class="list-group-item boton" (click)="MostratAll()"> Ver todos</li> -->
+	</ul>
+	<p-button type="button" (click)="visibleSidebar1 = false" label="Salir" styleClass="p-button-secondary"></p-button>
+    </p-sidebar>
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-6 px-4 py-4 col-md-1 animate__animated animate__slideInLeft">
-
+			<button pButton pRipple type="button" icon="pi pi-bars" class="p-button-outlined color "  (click)="visibleSidebar1 = true"></button>
 		</div>
 		<div class="col-6  px-4 py-4 col-md-11 animate__animated   animate__fadeInUp">
 			<div class="d-flex">
@@ -11,12 +25,29 @@
 
 		</div>
 	</div>
+</div>
+<div class="container-fluid" *ngIf="pokemon">
+
 
 
 	<div class="row mb-4">
 		<div class="col-12">
 			<div class="text-center">
-				<input type="text">
+
+				<p-dropdown [options]="countries" [(ngModel)]="selectedCountry" optionLabel="name" [filter]="true" filterBy="name"
+				[showClear]="true" placeholder="Selecciona un pokemon">
+				<ng-template pTemplate="selectedItem">
+					<div class="country-item country-item-value" *ngIf="selectedCountry">
+						<div>{{selectedCountry.name}}</div>
+					</div>
+				</ng-template>
+				<ng-template let-country pTemplate="item">
+					<div class="country-item">
+						<div (click)="GetPokemon(country.name)" >{{country.name}}</div>
+					</div>
+				</ng-template>
+			</p-dropdown>
+
 			</div>
 		</div>
 	</div>
@@ -34,7 +65,7 @@
 			<div class="card fondo mb-3 animate__animated   animate__fadeInUp">
 				<h1 class="h1 mt-2"><strong>{{Pokemon.name |titlecase}}</strong></h1>
 				<hr>
-				
+
 					<div class="row animate__animated   animate__fadeInUp" *ngIf="Estadisticas">
 						<div class="col-6">
 							<h6> <strong>Altura:</strong> {{Pokemon.height}} cm</h6>
@@ -63,7 +94,7 @@
 					</div>
 
 
-				
+
 					<div class="row mb-4 animate__animated   animate__fadeInUp" *ngIf="Estadisticas">
 						<h4 class="h5 text-center py-3"><strong>Estadisticas Iniciales</strong></h4>
 						<div class="col-12 col-md-6 text-center px-5" *ngFor="let esta of Pokemon.stats;let i = index">
@@ -74,11 +105,11 @@
 									<div class="col-6">
 										<h6 class="h6 text-start">{{Pokemon.stats[i].base_stat}}</h6>
 									</div>
-								
+
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="row mb-4 animate__animated   animate__fadeInUp" *ngIf="Estadisticas">
 						<h4 class="h5 text-center py-3"><strong>Habilidades</strong></h4>
 						<div class="col-12 col-md-6 text-center px-5" *ngFor="let esta of Pokemon.abilities;let i = index">
@@ -86,8 +117,8 @@
 									<div class="col-12">
 										<h6 class="h6 text-center">{{Pokemon.abilities[i].ability.name |titlecase}}</h6>
 									</div>
-		
-								
+
+
 							</div>
 						</div>
 					</div>
@@ -129,7 +160,7 @@
 						</div>
 
 
-						
+
 						<div class="row animate__animated   animate__fadeInUp">
 							<h6 class="text-center"><strong>Diseño actual</strong></h6>
 							<div class="col-6">
@@ -150,20 +181,20 @@
 						<div class="row animate__animated   animate__fadeInUp">
 							<h6 class="text-center"><strong>Diseño TV</strong></h6>
 							<div class="col-12">
-						
+
 
 								<img [src]="this.Pokemon.sprites.other?.['official-artwork']?.front_default" class="img-fluid mx-auto d-block ">
 
 							</div>
 
-							
+
 						</div>
 
 					</div>
 
-					
-					
-				
+
+
+
 					<button class="btn btn-primary my-4 mx-4 animate__animated   animate__fadeInUp" *ngIf="Estadisticas" (click)="galeria()"> Galeria</button>
 					<button class="btn btn-primary my-4 mx-4 animate__animated   animate__fadeInUp" *ngIf="Galeria" (click)="estadisticas()"> Estadisticas</button>
 
@@ -173,3 +204,6 @@
 
 	</div>
 </div>
+
+
+
